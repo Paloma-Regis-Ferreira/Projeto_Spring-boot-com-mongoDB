@@ -3,29 +3,35 @@ package com.paloma.projetomongo.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+//no mongodb isso indica que o dominio é a coleção
+@Document
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
-
-	private Integer id;
+	
+	@Id
+	private String id;
 	private String name;
 	private String email;
 	
 	public User() {
 	}
 
-	public User(Integer id, String name, String email) {
+	public User(String id, String name, String email) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
