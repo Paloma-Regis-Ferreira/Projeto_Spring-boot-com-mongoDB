@@ -1,6 +1,7 @@
 package com.paloma.projetomongo.dto;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 import com.paloma.projetomongo.domain.User;
 
@@ -12,7 +13,7 @@ public class UserDTO implements Serializable{
 	private String name;
 	private String email;
 	
-	public UserDTO() {
+	public UserDTO(){
 	}
 	
 	public UserDTO(User obj) {
