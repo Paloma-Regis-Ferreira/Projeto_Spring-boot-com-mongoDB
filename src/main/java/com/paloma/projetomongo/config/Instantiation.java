@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.TimeZone;
 
 import com.paloma.projetomongo.dto.AuthorDTO;
+import com.paloma.projetomongo.dto.CommentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -38,8 +39,17 @@ public class Instantiation implements CommandLineRunner {
 
 		userRepository.saveAll(Arrays.asList(maria, alex, bob));
 
-		Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo", new AuthorDTO(maria));
+		Post post1 = new Post(null, sdf.parse("21/03/2021"), "Partiu viagem", "Vou viajar para São Paulo", new AuthorDTO(maria));
 		Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia", "Acordei", new AuthorDTO(maria));
+
+		CommentDTO comment = new CommentDTO("Boa viagem", sdf.parse("21/03/2021"), new AuthorDTO(alex));
+		CommentDTO comment2 = new CommentDTO("Boa viagem", sdf.parse("21/03/2021"), new AuthorDTO(bob));
+		CommentDTO comment3 = new CommentDTO("Obrigada", sdf.parse("22/03/2021"), new AuthorDTO(maria));
+
+		CommentDTO comment4 = new CommentDTO("Bom dia", sdf.parse("23/03/2018"), new AuthorDTO(alex));
+
+		post1.setComments(Arrays.asList(comment, comment2, comment3));
+		post2.setComments(Arrays.asList(comment4));
 
 		postRepository.saveAll(Arrays.asList(post1, post2));
 
